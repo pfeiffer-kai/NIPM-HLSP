@@ -45,4 +45,4 @@ Copyright (c) 2022, Kai Pfeiffer
 
 ## Authors
 
-- Kai Pfeiffer (<pfeifferkaimartin@gmail.com>)
+- Kai Pfeiffer (<kaipfeifferrobotics@gmail.com>)
