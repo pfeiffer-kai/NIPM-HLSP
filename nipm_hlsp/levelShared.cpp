@@ -122,7 +122,7 @@ namespace nipmhlsp
             // how to achieve highest accuracy with fewest number of Newton iterations?
             if (ws->w_inact()[i_inact] < opt.activationThres && ws->lam_inact()[i_inact] > opt.activationThres)
             {
-                if (opt.verbose >= SOLVE) cout << "activate inactive constraint " << i_inact << " from inact (constraint from level " << idx_act(i_inact,0) << ", row in A: " << idx_inact(i_inact,1) << ") with w_inact[i_inact] " << ws->w_inact()[i_inact] << " and lam_inact[i_inact] " << ws->lam_inact()[i_inact] << std::endl;
+                if (opt.verbose >= SOLVE) cout << "activate inactive constraint " << i_inact << " from inact (constraint from level " << idx_inact(i_inact,0) << ", row in A: " << idx_inact(i_inact,1) << ") with w_inact[i_inact] " << ws->w_inact()[i_inact] << " and lam_inact[i_inact] " << ws->lam_inact()[i_inact] << std::endl;
                 A_act.row(m_act_p[l + 1]) = A_inact.row(i_inact); // copy including the block operation
                 A_actN.row(m_act_p[l + 1]) = A_inactN.row(i_inact); // copy including the block operation
                 b_act(m_act_p[l + 1]) = b_inact(i_inact) + ws->_w_inact()(i_inact);
@@ -265,7 +265,7 @@ namespace nipmhlsp
                     lvl.AeN.middleCols(hp->n-hp->nr + rank_p[l], hp->nr - rank_p[l]) -= lvl.AeN.middleCols(hp->n-hp->nr, rank_p[l]) *
                         mat2dec.block(0, rank_p[l], rank_p[l], hp->nr - rank_p[l]);
 
-                    // lower level iequality constraints
+                    // lower level inequality constraints
                     lvl.AiN.rightCols(hp->nr).applyOnTheRight(permLvl[l]);
                     mat2dec.topLeftCorner(rank_p[l], rank_p[l])
                         .triangularView<Eigen::Upper>()
