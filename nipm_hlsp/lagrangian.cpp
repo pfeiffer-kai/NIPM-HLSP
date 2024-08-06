@@ -280,8 +280,6 @@ namespace nipmhlsp
         // turn into format dz = [0, P * [dz 0]] for dx = N dz in lagrangian
         ws->dx().head(hp->n - hp->nr).setZero();
         ws->dx().tail(hp->nr) = ws->g().head(hp->nr);
-        ws->dx().head(hp->n - hp->nr).setZero();
-        ws->dx().tail(hp->nr) = ws->g().head(hp->nr);
 
         lvlSh.applyNSOnTheLeftOnDx(l, ws);
         // if the previous level converged badly then this component ws->will never be below threshold
