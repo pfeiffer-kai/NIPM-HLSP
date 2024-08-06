@@ -48,8 +48,8 @@ namespace nipmhlsp
 
         Lambda_act.resize(m, p); Lambda_act.setZero();
 
-        idx_act = mati::Zero(mi, 4); // level, row in A, virtual priority level, row in A_act
-        idx_inact = mati::Zero(mi, 2); // level and row in A
+        idx_act = mati::Constant(mi, 4, -1); // level, row in A, virtual priority level, row in A_act
+        idx_inact = mati::Constant(mi, 2, -1); // level and row in A
     }
 
     void levelShared::applyNSOnTheLeftOnDx(int l, shared_ptr<data> ws)
@@ -138,7 +138,7 @@ namespace nipmhlsp
                 idx_act(m_activated, 2) = l;
                 idx_act(m_activated, 3) = m_act_p[l + 1];
                 idx_inact.row(i_inact) = idx_inact.row(m_inact_ - 1);
-                idx_inact.row(m_inact_ - 1).setZero();
+                idx_inact.row(m_inact_ - 1).setConstant(-1);
                 m_act_p[l + 1]++;
                 m_act++;
                 m_activated++;
